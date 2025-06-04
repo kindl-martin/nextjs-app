@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL")
+}
+
+model users {
+  id       String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name     String?
+  email    String  @unique
+  password String
+  image    String?
+  roles    roles[] @relation("rolesTousers")
+}
+
+model timer {
+  id      String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  start   DateTime  @default(now()) @db.Timestamp(6)
+  end     DateTime? @db.Timestamp(6)
+  task_id String?   @db.Uuid
+  tasks   tasks?    @relation(fields: [task_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model tasks {
+  id         String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name       String
+  user_id    String     @db.Uuid
+  created_at DateTime   @default(now()) @db.Timestamp(6)
+  state      task_state @default(OPEN)
+  position   Int
+  timer      timer[]
+}
+
+model roles {
+  id    String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name  String
+  users users[] @relation("rolesTousers")
+}
+
+enum task_state {
+  OPEN
+  DONE
+}
