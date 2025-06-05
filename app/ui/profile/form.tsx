@@ -8,13 +8,13 @@ export function UserForm({
 }: {
   user: Promise<users & { roles: roles[] }>;
 }) {
-  const userData = use(user);
+  const { image, name, email } = use(user);
 
   return (
     <Card className="w-fit p-6">
-      <Avatar src={userData.image?.toString()} />
-      <p>{userData.name}</p>
-      <p>{userData.email}</p>
+      <Avatar src={image?.toString()} />
+      <p>{name}</p>
+      <p>{email}</p>
     </Card>
   );
 }

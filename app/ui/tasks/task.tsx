@@ -10,7 +10,7 @@ import {
 } from '@/app/ui/tasks/actions';
 import { Stopwatch } from '@/app/ui/tasks/stopwatch';
 import { getTotalTime } from '@/app/ui/time';
-import { useEffect, useRef } from 'react';
+import { use, useEffect, useRef } from 'react';
 import { createSwapy, type Swapy } from 'swapy';
 import clsx from 'clsx';
 import { EllipsisVerticalIcon, TrashIcon } from '@heroicons/react/24/outline';
@@ -50,9 +50,15 @@ export function Task({ task }: { task: tasks & { timer: timer[] } }) {
   );
 }
 
-export function TaskList({ tasks }: { tasks: (tasks & { timer: timer[] })[] }) {
+export function TaskList({
+  tasks,
+}: {
+  tasks: Promise<(tasks & { timer: timer[] })[]>;
+}) {
   const swapy = useRef<Swapy | null>(null);
   const container = useRef<HTMLDivElement>(null);
+
+  const allTasks = use(tasks);
 
   useEffect(() => {
     if (container.current) {
@@ -70,7 +76,7 @@ export function TaskList({ tasks }: { tasks: (tasks & { timer: timer[] })[] }) {
 
   return (
     <section className="mt-10 flex flex-col gap-4" ref={container}>
-      {tasks.map((task) => (
+      {allTasks.map((task) => (
         <div data-swapy-slot={task.id} key={task.id}>
           <div data-swapy-item={task.id} key={task.id}>
             <Task task={task} />

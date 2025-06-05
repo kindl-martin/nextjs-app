@@ -1,20 +1,5 @@
-import { prisma } from '@/app/lib/db';
-import { Session } from 'next-auth';
-import { TaskList } from '@/app/ui/tasks/task';
 import { Skeleton } from '@heroui/skeleton';
 import { Card } from '@heroui/card';
-
-export async function TasksLoader({ session }: { session: Session | null }) {
-  const tasks = await prisma.tasks.findMany({
-    where: { user_id: session?.user?.id },
-    orderBy: { position: 'desc' },
-    include: {
-      timer: true,
-    },
-  });
-
-  return <TaskList tasks={tasks} />;
-}
 
 export function TasksLoaderSkeleton() {
   return (
