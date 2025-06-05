@@ -1,16 +1,11 @@
 'use server';
 
+import bcrypt from 'bcrypt';
+import { prisma } from '@/app/lib/db';
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
-import { prisma } from '@/app/lib/db';
-import bcrypt from 'bcrypt';
-
-export type ErrorState = {
-  error: {
-    title: string;
-    description: string;
-  };
-};
+import { ErrorState } from '@/app/lib/types';
+import { authGuard } from '@/app/lib/auth';
 
 export async function register(
   prevState: ErrorState | undefined,
@@ -37,39 +32,6 @@ export async function register(
         });
       }
     }
-  } catch (error) {
-    if (error instanceof AuthError) {
-      switch (error.type) {
-        case 'CredentialsSignin':
-          return {
-            error: {
-              title: 'Invalid credentials',
-              description: 'Please check your email and password.',
-            },
-          };
-        default:
-          return {
-            error: {
-              title: 'Something went wrong',
-              description: 'Please try again later.',
-            },
-          };
-      }
-    }
-    throw error;
-  }
-}
-
-export async function authenticate(
-  prevState: ErrorState | undefined,
-  formData: FormData,
-) {
-  try {
-    await signIn('credentials', {
-      email: formData.get('email'),
-      password: formData.get('password'),
-      redirectTo: '/dashboard',
-    });
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {

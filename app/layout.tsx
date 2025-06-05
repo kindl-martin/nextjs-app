@@ -6,6 +6,7 @@ import { Providers } from '@/app/providers';
 import { Metadata } from 'next';
 import NavigationBar from '@/app/ui/dashboard/navbar';
 import { auth } from '@/auth';
+import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   title: 'Next.js app',
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   const session = await auth();
 

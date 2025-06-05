@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('login', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/login');
 
   await page.getByTestId('login-link').click();
   await page.getByTestId('login-email-input').fill('kindl.m@icloud.com');
