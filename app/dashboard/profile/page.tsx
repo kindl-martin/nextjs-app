@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { Skeleton } from '@heroui/skeleton';
 import { prisma } from '@/app/lib/db';
 import { auth } from '@/auth';
-import { UserForm } from '@/app/ui/profile/form';
+import { UserForm } from './_components/form';
 
 export default async function Page() {
   const session = await auth();

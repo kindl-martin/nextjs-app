@@ -4,15 +4,18 @@ import { AtSymbolIcon, KeyIcon } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from '@heroui/button';
 import { useActionState, useEffect } from 'react';
-import { register } from '@/app/lib/actions';
+import { authenticate } from './actions';
 import { Card } from '@heroui/card';
 import { Form } from '@heroui/form';
 import { Input } from '@heroui/input';
 import { Spacer } from '@heroui/spacer';
 import { addToast } from '@heroui/toast';
 
-export default function RegisterForm() {
-  const [state, formAction, isPending] = useActionState(register, undefined);
+export default function LoginForm() {
+  const [state, formAction, isPending] = useActionState(
+    authenticate,
+    undefined,
+  );
 
   useEffect(() => {
     if (state?.error) {
@@ -27,7 +30,7 @@ export default function RegisterForm() {
   return (
     <Card className="p-6">
       <Form action={formAction}>
-        <h1 className="mb-3 text-2xl">Please register to continue.</h1>
+        <h1 className="mb-3 text-2xl">Please log in to continue.</h1>
         <Input
           data-testid="login-email-input"
           type="email"
@@ -58,7 +61,7 @@ export default function RegisterForm() {
           color="primary"
           type="submit"
         >
-          Register <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+          Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
         </Button>
       </Form>
     </Card>
