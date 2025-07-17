@@ -21,7 +21,7 @@ export default async function Page() {
     <main>
       {userId && <CreateTaskForm userId={userId} />}
       <Suspense fallback={<TasksLoaderSkeleton />}>
-        <TaskList tasks={tasks} />;
+        <TaskList tasks={tasks} />
       </Suspense>
     </main>
   );

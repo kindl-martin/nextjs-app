@@ -1,6 +1,6 @@
 'use server';
 
-import { task_state } from '@/app/generated/prisma';
+import { task_state, tasks, timer } from '@/app/generated/prisma';
 import { z } from 'zod';
 import { prisma } from '@/app/lib/db';
 import { revalidatePath } from 'next/cache';
@@ -95,16 +95,16 @@ export async function stopTimer(timerId: string) {
   revalidatePath('/dashboard/tasks');
 }
 
-export async function orderTasks(event: SwapEvent) {
+export async function orderTasks(newOrder: (tasks & { timer: timer[] })[]) {
   try {
     await Promise.all(
-      event.newSlotItemMap.asArray.map(async ({ slot, item }, index) => {
-        const position = event.newSlotItemMap.asArray.length - index;
+      newOrder.map(async (task, index) => {
+        const position = newOrder.length - index;
 
-        console.log('Updating task', item, 'to position', position);
+        console.log('Updating task', task.id, 'to position', position);
 
         await prisma.tasks.update({
-          where: { id: item },
+          where: { id: task.id },
           data: { position },
         });
       }),
