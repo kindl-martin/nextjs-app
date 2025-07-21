@@ -35,9 +35,9 @@ export function Stopwatch({
   return (
     <>
       {timer ? (
-        <span>{formatTime(totalTime + elapsed)}</span>
+        <span className="tabular-nums">{formatTime(totalTime + elapsed)}</span>
       ) : (
-        <p>{formatTime(totalTime)}</p>
+        <p className="tabular-nums">{formatTime(totalTime)}</p>
       )}
       {timer ? (
         <Button
