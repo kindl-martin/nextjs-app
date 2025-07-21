@@ -19,6 +19,7 @@ const config: Config = {
           500: '#0070F3',
           600: '#2F6FEB',
         },
+        danger: '#EF2B2B',
       },
     },
     keyframes: {
