@@ -24,7 +24,7 @@ export default function CreateTaskForm({ userId }: { userId: string }) {
     >
       <Input isRequired name="name" placeholder="Add new task" />
       <Button
-        className="flex-shrink-0"
+        className="shrink-0"
         type="submit"
         color="primary"
         isLoading={isPending}

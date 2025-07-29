@@ -26,7 +26,7 @@ export default function NavigationBar({
     <Navbar maxWidth="xl" isBordered>
       <NavbarBrand>
         <div className="flex flex-row items-center leading-none">
-          <GlobeAltIcon className="h-12 w-12 rotate-[15deg]" />
+          <GlobeAltIcon className="h-12 w-12 rotate-15" />
         </div>
       </NavbarBrand>
       <NavbarContent justify="end">
@@ -56,7 +56,7 @@ export default function NavigationBar({
                 <DropdownItem
                   key="theme"
                   classNames={{
-                    base: 'hover:!bg-transparent cursor-default',
+                    base: 'hover:bg-transparent! cursor-default',
                     title: 'flex items-center justify-between gap-10',
                   }}
                 >

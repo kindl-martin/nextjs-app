@@ -70,7 +70,7 @@ export function Task({ task }: { task: tasks & { timer: timer[] } }) {
       >
         <EllipsisVerticalIcon
           onPointerDown={(e) => controls.start(e)}
-          className="h-5 w-5 flex-shrink-0 cursor-grab"
+          className="h-5 w-5 shrink-0 cursor-grab"
         />
         <Checkbox
           size="lg"
@@ -79,7 +79,7 @@ export function Task({ task }: { task: tasks & { timer: timer[] } }) {
             toggleTaskState(task.id, isDone ? task_state.OPEN : task_state.DONE)
           }
         />
-        <h3 className={clsx('flex-grow', { 'line-through': isDone })}>
+        <h3 className={clsx('grow', { 'line-through': isDone })}>
           {task.name}
         </h3>
         <Stopwatch timer={openTimer} totalTime={totalTime} taskId={task.id} />
