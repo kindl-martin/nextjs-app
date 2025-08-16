@@ -1,7 +1,11 @@
+'use client';
+
 import { roles, users } from '@/app/generated/prisma';
 import { use } from 'react';
 import { Avatar } from '@heroui/avatar';
 import { Card } from '@heroui/card';
+import { Button } from '@heroui/button';
+import { updateProfile } from '../actions';
 
 export function UserForm({
   user,
@@ -15,6 +19,7 @@ export function UserForm({
       <Avatar src={image?.toString()} />
       <p>{name}</p>
       <p>{email}</p>
+      <Button onPress={updateProfile}>Edit</Button>
     </Card>
   );
 }

@@ -2,7 +2,6 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "db": "pnpx @prisma/ppg-tunnel --port 5432",
     "dev": "NODE_OPTIONS='--inspect' next dev --turbopack",
     "lint": "next lint",
     "prettier": "prettier --write --ignore-unknown .",
@@ -71,7 +70,6 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.52.0",
-    "@prisma/ppg-tunnel": "^0.3.0",
     "@react-types/shared": "^3.29.0",
     "@types/bcrypt": "^5.0.2",
     "@types/react": "^19.1.2",
