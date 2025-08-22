@@ -3,29 +3,30 @@
 import { AtSymbolIcon, KeyIcon } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from '@heroui/button';
-import { useActionState, useEffect } from 'react';
+import { useActionState } from 'react';
 import { authenticate } from './actions';
 import { Card } from '@heroui/card';
 import { Form } from '@heroui/form';
 import { Input } from '@heroui/input';
 import { Spacer } from '@heroui/spacer';
 import { addToast } from '@heroui/toast';
+import { ErrorState } from '@/app/lib/types';
 
 export default function LoginForm() {
-  const [state, formAction, isPending] = useActionState(
-    authenticate,
+  const [, formAction, isPending] = useActionState(
+    async (prevState: ErrorState | undefined, formData: FormData) => {
+      const response = await authenticate(prevState, formData);
+      if (response?.error) {
+        addToast({
+          title: response.error.title,
+          description: response.error.description,
+          color: 'danger',
+        });
+      }
+      return response;
+    },
     undefined,
   );
-
-  useEffect(() => {
-    if (state?.error) {
-      addToast({
-        title: state.error.title,
-        description: state.error.description,
-        color: 'danger',
-      });
-    }
-  }, [state]);
 
   return (
     <Card className="p-6">
