@@ -5,7 +5,7 @@ test("login", async ({ page }) => {
 
   await page.getByTestId("login-link").click();
   await page.getByTestId("login-email-input").fill("max.kindl@icloud.com");
-  await page.getByTestId("login-password-input").fill("123456");
+  await page.getByTestId("login-password-input").fill("password");
   await page.getByTestId("login-submit").click();
 
   await expect(page).toHaveURL("/dashboard");
