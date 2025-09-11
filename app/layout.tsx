@@ -5,6 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Providers } from '@/app/providers';
 import { Metadata } from 'next';
 import NavigationBar from '@/app/ui/dashboard/navbar';
+import ScrollBar from '@/app/ui/dashboard/scrollbar';
 import { auth } from '@/auth';
 import { ReactNode } from 'react';
 
@@ -27,6 +28,7 @@ export default async function RootLayout({
           <div className="mx-auto mt-10 flex max-w-[1280px] flex-col px-4">
             {children}
           </div>
+          <ScrollBar />
         </Providers>
         <Analytics />
         <SpeedInsights />

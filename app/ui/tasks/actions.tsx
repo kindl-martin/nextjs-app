@@ -5,7 +5,6 @@ import { z } from 'zod';
 import { prisma } from '@/app/lib/db';
 import { revalidatePath } from 'next/cache';
 import { ActionState } from '@/app/ui/types';
-import { type SwapEvent } from 'swapy';
 
 const UserFormSchema = z.object({
   name: z.string().min(1, 'Please fill task name.'),

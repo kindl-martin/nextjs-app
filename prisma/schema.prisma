@@ -43,6 +43,12 @@ model roles {
   users users[] @relation("rolesTousers")
 }
 
+model journal {
+  id    String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  title String
+  message String
+}
 
 enum task_state {
   OPEN

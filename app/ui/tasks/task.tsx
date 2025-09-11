@@ -1,28 +1,28 @@
-'use client';
+"use client";
 
-import { Checkbox } from '@heroui/checkbox';
-import { Card } from '@heroui/card';
-import { task_state, tasks, timer } from '@/app/generated/prisma';
+import { Checkbox } from "@heroui/checkbox";
+import { Card } from "@heroui/card";
+import { task_state, tasks, timer } from "@/app/generated/prisma";
 import {
   deleteTask,
   orderTasks,
   toggleTaskState,
-} from '@/app/ui/tasks/actions';
-import { Stopwatch } from '@/app/ui/tasks/stopwatch';
-import { getTotalTime } from '@/app/ui/time';
-import { use, useEffect, useState } from 'react';
-import clsx from 'clsx';
-import { EllipsisVerticalIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { Button } from '@heroui/button';
+} from "@/app/ui/tasks/actions";
+import { Stopwatch } from "@/app/ui/tasks/stopwatch";
+import { getTotalTime } from "@/app/ui/time";
+import { use, useEffect, useState } from "react";
+import clsx from "clsx";
+import { EllipsisVerticalIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { Button } from "@heroui/button";
 import {
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
-} from '@heroui/modal';
-import { Reorder, useDragControls } from 'motion/react';
-import { useDisclosure } from '@heroui/use-disclosure';
+} from "@heroui/modal";
+import { Reorder, useDragControls } from "framer-motion";
+import { useDisclosure } from "@heroui/use-disclosure";
 
 export function TaskList({
   tasks,
@@ -79,7 +79,7 @@ export function Task({ task }: { task: tasks & { timer: timer[] } }) {
             toggleTaskState(task.id, isDone ? task_state.OPEN : task_state.DONE)
           }
         />
-        <h3 className={clsx('grow', { 'line-through': isDone })}>
+        <h3 className={clsx("grow", { "line-through": isDone })}>
           {task.name}
         </h3>
         <Stopwatch timer={openTimer} totalTime={totalTime} taskId={task.id} />

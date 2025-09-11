@@ -47,6 +47,9 @@ export default function NavigationBar({
                 <DropdownItem key="dashboard" href="/dashboard">
                   Dashboard
                 </DropdownItem>
+                <DropdownItem key="journal" href="/dashboard/journal">
+                  Journal
+                </DropdownItem>
                 <DropdownItem key="tasks" href="/dashboard/tasks">
                   Tasks
                 </DropdownItem>
