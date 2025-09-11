@@ -7,7 +7,8 @@
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
     "start": "next start",
-    "test": "NEXTAUTH_URL=http://127.0.0.1:3000 AUTH_TRUST_HOST=true playwright test"
+    "test": "NEXTAUTH_URL=http://127.0.0.1:3000 AUTH_TRUST_HOST=true playwright test",
+    "test:ui": "NEXTAUTH_URL=http://127.0.0.1:3000 AUTH_TRUST_HOST=true playwright test --ui"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

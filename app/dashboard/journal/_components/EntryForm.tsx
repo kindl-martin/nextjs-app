@@ -1,15 +1,14 @@
-'use client';
+"use client";
 
-import { Form } from '@heroui/form';
-import { DatePicker } from '@heroui/date-picker';
-import { Radio, RadioGroup } from '@heroui/radio';
-import { Input, Textarea } from '@heroui/input';
-import { Button } from '@heroui/button';
-import { useActionState } from 'react';
-import { ErrorState } from '@/app/lib/types';
-import { authenticate } from '@/app/login/_components/actions';
-import { addToast } from '@heroui/toast';
-import { createJournalEntry } from '@/app/dashboard/journal/actions';
+import { Form } from "@heroui/form";
+import { DatePicker } from "@heroui/date-picker";
+import { Radio, RadioGroup } from "@heroui/radio";
+import { Input, Textarea } from "@heroui/input";
+import { Button } from "@heroui/button";
+import { useActionState } from "react";
+import { ErrorState } from "@/app/lib/types";
+import { addToast } from "@heroui/toast";
+import { createJournalEntry } from "@/app/dashboard/journal/actions";
 
 export default function EntryForm() {
   const [, formAction, isPending] = useActionState(
@@ -19,7 +18,7 @@ export default function EntryForm() {
         addToast({
           title: response.error.title,
           description: response.error.description,
-          color: 'danger',
+          color: "danger",
         });
       }
       return response;
