@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Prisma migrate db
-        run: pnpx prisma migrate deploy --no-engine
+        run: pnpx prisma migrate deploy
       - name: Prisma generate client
         run: pnpx prisma generate --no-engine
       - name: Install Vercel
