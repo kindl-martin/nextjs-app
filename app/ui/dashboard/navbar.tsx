@@ -11,7 +11,6 @@ import {
 import { Button } from '@heroui/button';
 import { Link } from '@heroui/link';
 import { ThemeSwitcher } from '@/app/ui/theme-switcher';
-import { usePathname } from 'next/navigation';
 import { User } from '@heroui/user';
 import { Session } from 'next-auth';
 import { callSignOut } from '@/app/ui/dashboard/actions';

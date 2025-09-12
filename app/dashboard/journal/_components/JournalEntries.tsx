@@ -4,7 +4,7 @@ import { journal } from '@/app/generated/prisma';
 import { use } from 'react';
 import { Card } from '@heroui/card';
 import { FadeUp } from '@/app/ui/animate/fadeUp';
-import { parseISO, format } from 'date-fns';
+import { format } from 'date-fns';
 
 export default function JournalEntries({
   journalEntries: journalEntriesPromise,
