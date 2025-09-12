@@ -33,7 +33,7 @@ jobs:
       - name: Prisma migrate db
         run: pnpx prisma migrate deploy
       - name: Prisma generate client
-        run: pnpx prisma generate --no-engine
+        run: pnpx prisma generate
       - name: Install Vercel
         run: pnpm install vercel --global
       - name: Pull Vercel Environment Information
