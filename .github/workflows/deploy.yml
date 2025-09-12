@@ -2,9 +2,9 @@ name: Production Deployment
 run-name: Production Deployment - ${{ github.ref_name }} - ${{ github.event.head_commit.message }}
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 jobs:
   deploy:
     timeout-minutes: 60

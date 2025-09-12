@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { motion, spring } from "framer-motion";
-import { FadeUp } from "@/app/ui/animate/fadeUp";
+import { useState } from 'react';
+import { motion, spring } from 'framer-motion';
+import { FadeUp } from '@/app/ui/animate/fadeUp';
 
 export default function Page() {
   const [state, setState] = useState(false);
@@ -17,8 +17,8 @@ export default function Page() {
               style={{
                 transition: `transform ${spring(1, 0.5)}`,
                 transform: state
-                  ? "translateX(200%) rotate(360deg)"
-                  : "translateX(-200%)",
+                  ? 'translateX(200%) rotate(360deg)'
+                  : 'translateX(-200%)',
               }}
             />
             <button

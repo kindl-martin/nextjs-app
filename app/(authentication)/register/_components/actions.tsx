@@ -11,6 +11,8 @@ export async function register(
   prevState: ErrorState | undefined,
   formData: FormData,
 ) {
+  await authGuard();
+
   const { password, email } = Object.fromEntries(formData.entries());
 
   try {

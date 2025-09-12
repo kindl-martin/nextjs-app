@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { AtSymbolIcon, KeyIcon } from "@heroicons/react/24/outline";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
-import { Button } from "@heroui/button";
-import { useActionState } from "react";
-import { authenticate } from "./actions";
-import { Form } from "@heroui/form";
-import { Input } from "@heroui/input";
-import { Spacer } from "@heroui/spacer";
-import { addToast } from "@heroui/toast";
-import { ErrorState } from "@/app/lib/types";
+import { AtSymbolIcon, KeyIcon } from '@heroicons/react/24/outline';
+import { ArrowRightIcon } from '@heroicons/react/20/solid';
+import { Button } from '@heroui/button';
+import { useActionState } from 'react';
+import { authenticate } from './actions';
+import { Form } from '@heroui/form';
+import { Input } from '@heroui/input';
+import { Spacer } from '@heroui/spacer';
+import { addToast } from '@heroui/toast';
+import { ErrorState } from '@/app/lib/types';
 
 export default function LoginForm() {
   const [, formAction, isPending] = useActionState(
@@ -19,7 +19,7 @@ export default function LoginForm() {
         addToast({
           title: response.error.title,
           description: response.error.description,
-          color: "danger",
+          color: 'danger',
         });
       }
       return response;
