@@ -42,7 +42,7 @@ export async function createTask(
       },
     });
   } catch (e) {
-    console.log('Error creating task: ', e);
+    console.error('Error creating task: ', e);
     return {
       message: 'Database Error: Failed to Create Task.',
     };
@@ -58,7 +58,7 @@ export async function toggleTaskState(id: string, state: task_state) {
       data: { state },
     });
   } catch (e) {
-    console.log('Error toggling task state: ', e);
+    console.error('Error toggling task state: ', e);
     return {
       message: 'Database Error: Failed to toggle Task state.',
     };
@@ -73,7 +73,7 @@ export async function startTimer(taskId: string) {
       data: { task_id: taskId },
     });
   } catch (e) {
-    console.log('Error starting timer: ', e);
+    console.error('Error starting timer: ', e);
     return {
       message: 'Database Error: Failed to start Timer.',
     };
@@ -89,7 +89,7 @@ export async function stopTimer(timerId: string) {
       data: { end: new Date() },
     });
   } catch (e) {
-    console.log('Error stopping timer: ', e);
+    console.error('Error stopping timer: ', e);
     return {
       message: 'Database Error: Failed to start Timer.',
     };
@@ -104,8 +104,6 @@ export async function orderTasks(newOrder: (tasks & { timer: timer[] })[]) {
       newOrder.map(async (task, index) => {
         const position = newOrder.length - index;
 
-        console.log('Updating task', task.id, 'to position', position);
-
         await prisma.tasks.update({
           where: { id: task.id },
           data: { position },
@@ -113,7 +111,7 @@ export async function orderTasks(newOrder: (tasks & { timer: timer[] })[]) {
       }),
     );
   } catch (e) {
-    console.log('Error ordering tasks: ', e);
+    console.error('Error ordering tasks: ', e);
     return {
       message: 'Database Error: Failed to order Tasks.',
     };
@@ -122,13 +120,11 @@ export async function orderTasks(newOrder: (tasks & { timer: timer[] })[]) {
 
 export async function deleteTask(taskId: string) {
   try {
-    console.log('Deleting task', taskId);
-    const res = await prisma.tasks.delete({
+    await prisma.tasks.delete({
       where: { id: taskId },
     });
-    console.log('Deleted task', res);
   } catch (e) {
-    console.log('Error deleting task: ', e);
+    console.error('Error deleting task: ', e);
     return {
       message: 'Database Error: Failed to delete Task.',
     };

@@ -1,6 +1,5 @@
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["driverAdapters"]
   binaryTargets   = ["native", "rhel-openssl-3.0.x"]
   output          = "../app/generated/prisma"
 }
@@ -12,13 +11,14 @@ datasource db {
 }
 
 model users {
-  id       String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name     String?
-  email    String  @unique
-  password String
-  phone    String? @unique
-  image    String?
-  roles    roles[] @relation("rolesTousers")
+  id          String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String?
+  email       String  @unique
+  password    String
+  phone       String? @unique
+  image       String?
+  roles       roles[] @relation("rolesTousers")
+  password_reset_token String?
 }
 
 model timer {
