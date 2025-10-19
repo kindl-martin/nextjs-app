@@ -1,7 +1,9 @@
 'use server';
 
 import { prisma } from '@/app/lib/db';
+import { emails } from '@/app/lib/email';
 import { ErrorState } from '@/app/lib/types';
+import EmailTemplate from './EmailTemplate';
 
 export async function triggerResetPassword(
   prevState: ErrorState | undefined,
@@ -26,6 +28,13 @@ export async function triggerResetPassword(
         where: {
           id: user.id,
         },
+      });
+
+      await emails.send({
+        from: 'Acme <onboarding@resend.dev>',
+        to: [email.toString()],
+        subject: 'Reset password',
+        react: EmailTemplate({ token }),
       });
     }
   } catch (error) {

@@ -23,9 +23,7 @@ export default function Page() {
         <EntryForm />
       </Card>
       <section className="mt-5 mb-10 space-y-5">
-        <Suspense
-          fallback={<Skeleton className="h-64 w-96 w-full rounded-2xl" />}
-        >
+        <Suspense fallback={<Skeleton className="h-64 w-96 rounded-2xl" />}>
           <JournalEntries journalEntries={journalEntries} />
         </Suspense>
       </section>
