@@ -3,12 +3,14 @@
 import { useState } from 'react';
 import { motion, spring } from 'framer-motion';
 import { FadeUp } from '@/app/ui/animate/fadeUp';
+import { Snippet } from '@heroui/snippet';
 
 export default function Page() {
   const [state, setState] = useState(false);
 
   return (
     <main className="relative h-[500vh]">
+      <Snippet>npm install @heroui/react</Snippet>
       <section className="mx-auto flex w-full max-w-3xl flex-col justify-center">
         <FadeUp>
           <motion.div

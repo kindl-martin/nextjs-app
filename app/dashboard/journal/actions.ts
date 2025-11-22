@@ -29,3 +29,23 @@ export async function createJournalEntry(
 
   revalidatePath('/dashboard/journal');
 }
+
+export async function deleteJournalEntry(id: string) {
+  try {
+    await prisma.journal.delete({
+      where: {
+        id,
+      },
+    });
+  } catch (error) {
+    console.error('Failed to create Journal entry:', error);
+    return {
+      error: {
+        title: 'Database Error',
+        description: 'Failed to create Journal entry.',
+      },
+    };
+  }
+
+  revalidatePath('/dashboard/journal');
+}

@@ -28,14 +28,14 @@ export default function EntryForm() {
 
   return (
     <Form className="space-y-3" action={formAction}>
-      <DatePicker aria-label="Select a date" />
-      <RadioGroup orientation="horizontal">
+      <DatePicker aria-label="Select a date" isRequired />
+      <RadioGroup orientation="horizontal" isRequired>
         <Radio value="work">Work</Radio>
         <Radio value="learning">Learning</Radio>
         <Radio value="interestingThing">Interesting thing</Radio>
       </RadioGroup>
-      <Input name="title" placeholder="Title" />
-      <Textarea name="message" placeholder="Type your entry here..." />
+      <Input name="title" placeholder="Title" required />
+      <Textarea name="message" required placeholder="Type your entry here..." />
       <Button
         type="submit"
         className="mt-5 w-full"
