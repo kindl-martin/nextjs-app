@@ -1,7 +1,5 @@
 import '@/app/ui/global.css';
 import { inter } from '@/app/ui/fonts';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Providers } from '@/app/providers';
 import { Metadata } from 'next';
 import NavigationBar from '@/app/ui/dashboard/navbar';
@@ -30,8 +28,6 @@ export default async function RootLayout({
           </div>
           <ScrollBar />
         </Providers>
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );

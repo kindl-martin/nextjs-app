@@ -18,7 +18,6 @@ const eslintConfig = [
       'build/**',
       'next-env.d.ts',
       '**/generated/**',
-      '.vercel/**',
     ],
   },
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
