@@ -1,8 +1,3 @@
-# fly.toml app configuration file generated for nextjs-app-nameless-voice-5759 on 2026-03-16T16:22:03+01:00
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
 app = 'nextjs-app-nameless-voice-5759'
 primary_region = 'fra'
 
@@ -17,6 +12,6 @@ primary_region = 'fra'
   processes = ['app']
 
 [[vm]]
-  memory = '1gb'
+  memory = '512mb'
   cpus = 1
   memory_mb = 1024
